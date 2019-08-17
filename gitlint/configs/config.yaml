@@ -212,6 +212,18 @@ bash:
     {filename}: line (?P<line>{lines}): (?P<message>.+)
   installation: Please install bash in your system.
 
+# Shellcheck
+shellcheck:
+  extensions:
+    - .sh
+  command: shellcheck
+  arguments:
+    - --format=gcc
+  filter: >-
+    ^{filename}:(?P<line>\d):((?P<column>\d+):)?\s*
+    (?P<message>.+)\ \[(?P<message_id>\S+)\]$
+  installation: Please install shellcheck in your system.
+
 # YAML
 yaml:
   extensions:
